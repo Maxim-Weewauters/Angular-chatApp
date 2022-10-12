@@ -2,11 +2,9 @@
 
 namespace AngularChatApp.Models
 {
-    public class UserRegistration
+    public class User
     {
-        public Guid UserRegistrationId { get; set; }
-
-        [Range(6, 16)]
+        public Guid UserId { get; set; }
 
         public String? name { get; set; }
 

@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AngularChatApp.Migrations
 {
     [DbContext(typeof(UserContext))]
-    [Migration("20221012174912_connectionstring")]
-    partial class connectionstring
+    [Migration("20221012181414_model change test")]
+    partial class modelchangetest
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -24,9 +24,9 @@ namespace AngularChatApp.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("AngularChatApp.Models.UserRegistration", b =>
+            modelBuilder.Entity("AngularChatApp.Models.Usertest", b =>
                 {
-                    b.Property<Guid>("UserRegistrationId")
+                    b.Property<Guid>("UsertestId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
@@ -40,9 +40,32 @@ namespace AngularChatApp.Migrations
                     b.Property<string>("username")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("UserRegistrationId");
+                    b.HasKey("UsertestId");
 
-                    b.ToTable("UserRegistrations");
+                    b.ToTable("Usertest");
+
+                    b.HasData(
+                        new
+                        {
+                            UsertestId = new Guid("ab41fe7f-9c08-4e2f-8f4d-9efeb47431b8"),
+                            Password = "wachtwoord",
+                            name = "maxim",
+                            username = "maximeke"
+                        },
+                        new
+                        {
+                            UsertestId = new Guid("12a7f862-4b56-4ad0-a22a-5bf82d3a9b42"),
+                            Password = "wachtwoord2",
+                            name = "vincent",
+                            username = "achterlijken"
+                        },
+                        new
+                        {
+                            UsertestId = new Guid("5b1cca4e-17a2-4c14-8cb1-4dd2d7158c92"),
+                            Password = "test",
+                            name = "test",
+                            username = "testt"
+                        });
                 });
 #pragma warning restore 612, 618
         }

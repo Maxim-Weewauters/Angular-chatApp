@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AngularChatApp.Migrations
 {
     [DbContext(typeof(UserContext))]
-    [Migration("20221012170337_first")]
-    partial class first
+    [Migration("20221012181731_model change back")]
+    partial class modelchangeback
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -24,9 +24,9 @@ namespace AngularChatApp.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("AngularChatApp.Models.UserRegistration", b =>
+            modelBuilder.Entity("AngularChatApp.Models.User", b =>
                 {
-                    b.Property<Guid>("UserRegistrationId")
+                    b.Property<Guid>("UserId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
@@ -40,9 +40,32 @@ namespace AngularChatApp.Migrations
                     b.Property<string>("username")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("UserRegistrationId");
+                    b.HasKey("UserId");
 
-                    b.ToTable("UserRegistrations");
+                    b.ToTable("User");
+
+                    b.HasData(
+                        new
+                        {
+                            UserId = new Guid("995c1479-155b-426f-813f-e69e56774974"),
+                            Password = "wachtwoord",
+                            name = "maxim",
+                            username = "maximeke"
+                        },
+                        new
+                        {
+                            UserId = new Guid("b16e2cf4-6c84-4643-bda0-d8976b8d989d"),
+                            Password = "wachtwoord2",
+                            name = "vincent",
+                            username = "achterlijken"
+                        },
+                        new
+                        {
+                            UserId = new Guid("fab45b78-bdc9-4f61-9c6b-4ae73dde7ceb"),
+                            Password = "wimpie2000",
+                            name = "Wim",
+                            username = "Wimpie"
+                        });
                 });
 #pragma warning restore 612, 618
         }
