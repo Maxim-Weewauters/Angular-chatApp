@@ -1,5 +1,7 @@
 ﻿using AngularChatApp.Data;
 using AngularChatApp.Models;
+using AngularChatApp.Repositories;
+using AngularChatApp.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -9,10 +11,11 @@ namespace AngularChatApp.Controllers
     [Route("api")]
     public class UserController
     {
-        private UserContext _context;
-        public UserController(UserContext context)
+
+        private IUserService _userService;
+        public UserController(IUserService userService)
         {
-            _context = context;
+            _userService = userService;
         }
 
         [HttpGet]
@@ -21,7 +24,7 @@ namespace AngularChatApp.Controllers
         {
             try
             {
-                return await _context.Users.ToListAsync();
+                return await _userService.GetUsers();
             }
             catch(Exception)
             {
@@ -35,8 +38,7 @@ namespace AngularChatApp.Controllers
         {
             try
             {
-                await _context.Users.AddAsync(user);
-                await _context.SaveChangesAsync();
+                await _userService.AddUser(user);
                 return new OkObjectResult(201);
             }
             catch (Exception)

@@ -5,9 +5,21 @@ using Microsoft.Extensions.Options;
 
 namespace AngularChatApp.Data
 {
-    public class UserContext: DbContext
+    public interface IUserContext
+    {
+        DbSet<Message>? Messages { get; set; }
+        DbSet<User>? Users { get; set; }
+
+        int SaveChanges();
+
+        Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);
+    }
+
+    public class UserContext : DbContext, IUserContext
     {
         public DbSet<User>? Users { get; set; }
+
+        public DbSet<Message>? Messages { get; set; }
 
         private ConnectionStrings _connectionStrings;
 
@@ -26,23 +38,50 @@ namespace AngularChatApp.Data
             modelbuilder.Entity<User>().HasData(new User()
             {
                 UserId = Guid.NewGuid(),
-                name = "maxim",
-                username = "maximeke",
+                Name = "maxim",
+                Username = "maximeke",
                 Password = "wachtwoord"
             });
             modelbuilder.Entity<User>().HasData(new User()
             {
                 UserId = Guid.NewGuid(),
-                name = "vincent",
-                username = "achterlijken",
+                Name = "vincent",
+                Username = "achterlijken",
                 Password = "wachtwoord2"
             }); modelbuilder.Entity<User>().HasData(new User()
             {
                 UserId = Guid.NewGuid(),
-                name = "Wim",
-                username = "Wimpie",
+                Name = "Wim",
+                Username = "Wimpie",
                 Password = "wimpie2000"
             });
+            modelbuilder.Entity<User>().HasData(new User()
+            {
+                UserId = Guid.NewGuid(),
+                Name = "maxim",
+                Username = "maximeke",
+                Password = "wachtwoord"
+            });
+        }
+
+        public override int SaveChanges()
+        {
+            var entries = ChangeTracker
+                .Entries()
+                .Where(e => e.Entity is BaseEntity && (
+                    e.State == EntityState.Added || e.State == EntityState.Modified
+                ));
+
+            foreach (var entityEntry in entries)
+            {
+                ((BaseEntity)entityEntry.Entity).UpdatedDate = DateTime.Now;
+
+                if (entityEntry.State == EntityState.Added)
+                {
+                    ((BaseEntity)entityEntry.Entity).CreatedDate = DateTime.Now;
+                }
+            }
+            return base.SaveChanges();
         }
     }
 }

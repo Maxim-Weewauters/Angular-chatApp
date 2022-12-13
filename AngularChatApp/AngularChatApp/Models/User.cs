@@ -2,13 +2,13 @@
 
 namespace AngularChatApp.Models
 {
-    public class User
+    public class User: BaseEntity
     {
         public Guid UserId { get; set; }
 
-        public String? name { get; set; }
+        public String? Name { get; set; }
 
-        public String? username { get; set; }
+        public String? Username { get; set; }
 
         [Required]
         public String? Password { get; set; }

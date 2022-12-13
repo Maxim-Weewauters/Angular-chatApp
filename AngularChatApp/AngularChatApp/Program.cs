@@ -1,5 +1,7 @@
 using AngularChatApp.Configuration;
 using AngularChatApp.Data;
+using AngularChatApp.Repositories;
+using AngularChatApp.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -23,6 +25,11 @@ builder.Services.AddDbContext<UserContext>(options =>
 builder.Services.Configure<ConnectionStrings>(builder.Configuration.GetSection("ConnectionString"));
 
 builder.Services.AddControllers();
+
+builder.Services.AddTransient<IUserContext, UserContext>();
+
+builder.Services.AddTransient<IUserRepository, UserRepository>();
+builder.Services.AddTransient<IUserService, UserService>();
 
 var app = builder.Build();
 
