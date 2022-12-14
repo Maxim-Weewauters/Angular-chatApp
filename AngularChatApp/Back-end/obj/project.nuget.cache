@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "sGc50a1KI/dIlLe9ZZCF6e0fcVGkoIgOfPFPA9475yDMruqUKD29RPSO1vnumhh/qP9Lq5cfWRWoHzfPLTDvgQ==",
+  "dgSpecHash": "VRjvRZ8wDx8n4NYsG/WytQbCa9kM5LO6tk+qjH5lJXciZpBMJJVE6eU3MdI1G1HyvyO/2a4ZlX+TYGsnRzB/yw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\MW\\source\\repos\\Angular-chatApp\\AngularChatApp\\AngularChatApp\\AngularChatApp.csproj",
+  "projectFilePath": "C:\\Users\\MW\\source\\repos\\Angular-chatApp\\AngularChatApp\\Back-end\\AngularChatApp.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\MW\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\MW\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",

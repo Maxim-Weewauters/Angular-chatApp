@@ -2232,11 +2232,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\MW\\source\\repos\\Angular-chatApp\\AngularChatApp\\AngularChatApp\\AngularChatApp.csproj",
+      "projectUniqueName": "C:\\Users\\MW\\source\\repos\\Angular-chatApp\\AngularChatApp\\Back-end\\AngularChatApp.csproj",
       "projectName": "AngularChatApp",
-      "projectPath": "C:\\Users\\MW\\source\\repos\\Angular-chatApp\\AngularChatApp\\AngularChatApp\\AngularChatApp.csproj",
+      "projectPath": "C:\\Users\\MW\\source\\repos\\Angular-chatApp\\AngularChatApp\\Back-end\\AngularChatApp.csproj",
       "packagesPath": "C:\\Users\\MW\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\MW\\source\\repos\\Angular-chatApp\\AngularChatApp\\AngularChatApp\\obj\\",
+      "outputPath": "C:\\Users\\MW\\source\\repos\\Angular-chatApp\\AngularChatApp\\Back-end\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\MW\\AppData\\Roaming\\NuGet\\NuGet.Config",
