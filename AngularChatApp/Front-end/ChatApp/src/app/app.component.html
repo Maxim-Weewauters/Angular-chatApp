@@ -7,13 +7,14 @@
   <title>Angular chat app</title>
 </head>
 <body>
-  <h1>angular chat app</h1>
+  <!-- <h1>angular chat app</h1>
   <button (click)="getUsers()">Get data!</button>
   <ng-container *ngFor="let user of userData">
-  <p>De user met de naam '{{user.name}}' heeft de usernaam '{{user.username}}'</p>
-  <button type="button" class="add-button" (click)="addUser(user);">
-    Add user
-  </button>
-</ng-container>
+    <p>De user met de naam '{{user.name}}' heeft de usernaam '{{user.username}}'</p>
+    <button type="button" class="add-button" (click)="addUser(user);">
+      Add user
+    </button>
+  </ng-container> -->
+  <router-outlet></router-outlet>
 </body>
 </html>
