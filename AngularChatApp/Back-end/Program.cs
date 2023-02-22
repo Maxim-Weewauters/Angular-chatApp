@@ -5,6 +5,7 @@ using AngularChatApp.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using System.Reflection.PortableExecutable;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -47,5 +48,10 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.UseCors(options =>
+    options.WithOrigins("*")
+        .AllowAnyMethod()
+        .AllowAnyHeader());
 
 app.Run();

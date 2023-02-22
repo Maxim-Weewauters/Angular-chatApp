@@ -33,7 +33,7 @@ namespace AngularChatApp.Controllers
            
         }
         [HttpPost]
-        [Route("users")]
+        [Route("user")]
         public async Task<ActionResult<User>> AddUser(User user)
         {
             try

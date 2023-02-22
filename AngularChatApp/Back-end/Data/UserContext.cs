@@ -64,7 +64,7 @@ namespace AngularChatApp.Data
             });
         }
 
-        public override int SaveChanges()
+        public override Task<int> SaveChangesAsync(bool acceptAllChangesOnSuccess, CancellationToken cancellationToken = default)
         {
             var entries = ChangeTracker
                 .Entries()
@@ -81,7 +81,7 @@ namespace AngularChatApp.Data
                     ((BaseEntity)entityEntry.Entity).CreatedDate = DateTime.Now;
                 }
             }
-            return base.SaveChanges();
+            return Task.FromResult(base.SaveChanges());
         }
     }
 }
