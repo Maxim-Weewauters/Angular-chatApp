@@ -1,5 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { User } from 'src/app/Core/Services/user.service';
+
+//Custom validator, delete later
+function passwordCheck(c: AbstractControl): { [key: string]: boolean} | null{
+  if(c.value !== null){
+    return {'nameGet': true}
+  }
+  return null
+}
+
 
 @Component({
   selector: 'app-create-account',
@@ -7,16 +17,27 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./create-account.component.scss']
 })
 export class CreateAccountComponent implements OnInit {
+  user!: User;
+  userForm!: FormGroup;
 
-  public name: string | undefined;
-
-  constructor(
-    private route: ActivatedRoute,
-  ) {}
+  constructor(private fb: FormBuilder) {}
 
   ngOnInit() {
-    this.route.queryParams.subscribe(params => {
-      this.name = params['name'];
-    });
+    this.userForm = this.fb.group({
+      name: ['', [Validators.required, Validators.maxLength(32)]],
+      username: ['', Validators.required],
+      password: ['', [Validators.required, Validators.minLength(8)]]
+    })
   }
+
+  clickButten() {
+    // setValue can be used but requires every item
+    this.userForm.patchValue({
+      name: 'Maxim',
+      username: 'maxsken',
+      password: 'test'
+    })
+  }
+
+  save(){}
 }

@@ -6,8 +6,10 @@ import { AppComponent } from './app.component';
 
 import { HttpClientModule } from '@angular/common/http';
 import { ErrorModule } from './Error/error.module';
-import { MainModule } from './Main/main.module';
 import { AccountModule } from './Forms/account.module';
+import { MainModule } from './Main/main.module';
+import { SharedModule } from './Core/Shared/shared.module';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -16,10 +18,11 @@ import { AccountModule } from './Forms/account.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule,
     MainModule,
+    RouterModule,
     AccountModule,
-    ErrorModule
+    ErrorModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,1 +1,25 @@
-<p>create-account works!</p>
+<form (ngOnSubmit)="save()" [formGroup]="userForm">
+    <label for="name">Name: </label>
+    <input id="name" type="text" 
+        formControlName="name"
+        placeholder="Name (required)"
+        [ngClass]="(userForm.get('name')?.touched || userForm.get('name')?.dirty) && !userForm.get('name')?.valid ? 'is-invalid' : ''">
+    
+    <label for="Username">Username: </label>
+    <input id="Username" type="text" 
+        formControlName="username"
+        placeholder="Username (required)"
+        [ngClass]="(userForm.get('username')?.touched || userForm.get('username')?.dirty) && !userForm.get('username')?.valid ? 'is-invalid' : ''">
+        
+    <label for="password">password: </label>
+    <input id="password" type="text" 
+        formControlName="password"
+        placeholder="Password (required)"
+        [ngClass]="(userForm.get('password')?.touched || userForm.get('password')?.dirty) && !userForm.get('password')?.valid ? 'is-invalid' : ''">
+    <button (click)="clickButten()">generate data</button>
+    <button type="submit" 
+        [disabled]="!userForm.valid"
+        [title]="userForm.valid ? '': 'Disabled until the form data is valid'">
+        submit
+    </button>
+</form>
